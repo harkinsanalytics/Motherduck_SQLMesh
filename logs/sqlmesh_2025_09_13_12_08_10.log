@@ -1,0 +1,5 @@
+2025-09-13 12:08:10,986 - MainThread - sqlmesh.core.config.connection - INFO - Creating new DuckDB adapter for data files: {'md:champions_league_data'} (connection.py:489)
+2025-09-13 12:08:11,010 - MainThread - sqlmesh.core.console - WARNING - The motherduck engine is not recommended for storing SQLMesh state in production deployments. Please see https://sqlmesh.readthedocs.io/en/stable/guides/configuration/#state-connection for a list of recommended engines and more information. (console.py:2260)
+2025-09-13 12:08:12,001 - MainThread - sqlmesh.core.config.connection - INFO - Using existing DuckDB adapter due to overlapping data file: md:champions_league_data (connection.py:479)
+2025-09-13 12:08:12,155 - MainThread - sqlmesh.core.state_sync.db.interval - INFO - Compacting 0 intervals for 0 snapshots (interval.py:129)
+2025-09-13 12:08:12,206 - MainThread - root - INFO - Shutting down the event dispatcher (dispatcher.py:159)

@@ -1,0 +1,15 @@
+gateways:
+  motherduck:
+    connection:
+      type: motherduck
+      catalogs:
+        champions_league_data: "md:champions_league_data"
+        ephemeral: ":memory:"
+      token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhhcmtpbnNhbmFseXRpY3NAZ21haWwuY29tIiwic2Vzc2lvbiI6ImhhcmtpbnNhbmFseXRpY3MuZ21haWwuY29tIiwicGF0IjoiZV85eUN0LWJXSGJsSnJXanRYTEJqLXFHQmdmNXFkcV9vMTdpeHJUNUxoZyIsInVzZXJJZCI6ImMxNGE0OWZmLTgwNjctNGY5YS1hNWU5LTU5ZTYxMzQ0ZWNjOSIsImlzcyI6Im1kX3BhdCIsInJlYWRPbmx5IjpmYWxzZSwidG9rZW5UeXBlIjoicmVhZF93cml0ZSIsImlhdCI6MTc1Nzc3OTY1MX0.gG9fHk_cXLQaGZvODiyMdL1PIGJHSbzghjVbkR81kdk"
+default_gateway: motherduck
+
+model_defaults:
+  dialect: duckdb
+
+
+
