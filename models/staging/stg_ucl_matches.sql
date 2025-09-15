@@ -1,7 +1,7 @@
 MODEL (
     name champions_league_data.staging.stg_ucl_matches
   , kind FULL
-  , cron '@weekly'
+  , cron '0 12 * * 4'
   , grain id
 );
 
@@ -34,7 +34,6 @@ SELECT
         , score_fullTime_away as score_fulltime_away 
         , score_halfTime_home as score_halftime_home 
         , score_halfTime_away as score_halftime_away 
-        , odds_msg
         , referees
 FROM
   champions_league_data.main.champions_league_matches
