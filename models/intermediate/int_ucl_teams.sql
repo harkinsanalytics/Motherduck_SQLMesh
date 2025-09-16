@@ -21,9 +21,10 @@ SELECT
         , t.coach_contract_start
         , t.coach_contract_until
         , t.lastupdated
-        , COALESCE(t.latitude, l.latitude) as latitude
-        , COALESCE(t.longitude, l.longitude) as longitude 
-        , r.rank 
+        , l.latitude 
+        , l.longitude 
+        , r.rank as european_rank 
+        , rank() OVER (PARTITION BY t.team_id ORDER BY r.rank) as ucl_rank 
 FROM staging.stg_ucl_teams t 
 JOIN main.ucl_teams_city_latlong l 
 ON t.team_id = l.team_id 

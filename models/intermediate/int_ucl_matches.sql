@@ -5,6 +5,7 @@ MODEL (
   , grain match_id
 );
 
+WITH t1 as (
 SELECT 
           m.competition_id
         , m.competition_name
@@ -35,14 +36,32 @@ SELECT
         , m.score_halftime_home
         , m.score_halftime_away
         , m.referees
-        , t.latitude as hometeam_latitude
-        , t.longitude as hometeam_longitude
-        , tt.latitude as awayteam_latitude
-        , tt.longitude as awayteam_longitude
-        , t.rank as hometeam_rank
-        , tt.rank as awayteam_rank 
+        , l.latitude as hometeam_latitude
+        , l.longitude as hometeam_longitude
+        , ll.latitude as awayteam_latitude
+        , ll.longitude as awayteam_longitude
+        , t.european_rank as hometeam_european_rank
+        , tt.european_rank as awayteam_european_rank 
+        , t.ucl_rank as hometeam_ucl_rank
+        , tt.ucl_rank as awayteam_ucl_rank
 FROM staging.stg_ucl_matches m
-JOIN intermediate.int_ucl_teams t 
+LEFT JOIN intermediate.int_ucl_teams t 
 ON m.hometeam_id = t.team_id 
-JOIN intermediate.int_ucl_teams tt 
+LEFT JOIN intermediate.int_ucl_teams tt 
 ON m.awayteam_id = tt.team_id 
+LEFT JOIN staging.stg_ucl_latlong l 
+ON m.hometeam_id = l.team_id 
+LEFT JOIN staging.stg_ucl_latlong ll 
+ON m.awayteam_id = ll.team_id 
+)
+
+SELECT
+        * 
+      , round(3959 * 2 * ASIN(
+        SQRT(
+            POWER(SIN(RADIANS(awayteam_latitude - hometeam_latitude) / 2), 2) +
+            COS(RADIANS(hometeam_latitude)) *
+            COS(RADIANS(awayteam_latitude)) *
+            POWER(SIN(RADIANS(awayteam_longitude - hometeam_longitude) / 2), 2)
+        )),2) AS distance_in_miles
+FROM t1
