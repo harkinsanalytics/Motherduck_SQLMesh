@@ -8,7 +8,8 @@ MODEL (
 );
 
 SELECT
-              area_name
+              current_date('America/New_York') as snapshot_date
+            , area_name
             , team_id
             , team_name
             , team_short_name

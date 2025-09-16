@@ -9,7 +9,8 @@ MODEL (
 
 -- Select all games that have already been played.
 SELECT
-          competition_id
+          current_date('America/New_York') as snapshot_date
+        , competition_id
         , competition_name
         , competition_code
         , season_id

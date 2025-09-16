@@ -57,6 +57,7 @@ SELECT
   , ud.home_away
   , ud.score_fulltime
   , ud.score_winner
+  , ud.match_status 
   , sum(CAST(ud.score_halftime as int)) OVER (PARTITION BY ud.team_id ORDER BY ud.matchday ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) as halftime_goals_scored
   , sum(CAST(ud.score_fulltime as int)) OVER (PARTITION BY ud.team_id ORDER BY ud.matchday ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) as total_goals_scored
   , CASE WHEN ud.score_winner = ud.home_away THEN 3
@@ -81,12 +82,15 @@ ON p.match_id = pp.match_id AND p.team_id != pp.team_id
 
 SELECT 
       matchday
+    , match_status 
     , team_tla 
     , team_name 
     , total_points_earned
     , total_goals_scored
     , total_goals_conceded
     , (total_goals_scored-total_goals_conceded) as goal_differential
+    , max(matchday) OVER (ORDER BY matchday DESC) as max_matchday
 FROM goals_conceded
 WHERE 1=1
+AND match_status = 'FINISHED'
 ORDER BY 1, 4 DESC, 7 DESC, 5 DESC, 3
