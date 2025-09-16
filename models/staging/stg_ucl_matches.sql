@@ -1,7 +1,7 @@
 MODEL (
     name champions_league_data.staging.stg_ucl_matches
   , kind FULL
-  , cron '0 12 * * 4'
+  , cron '0 8 * * 3,4,5'
   , grain id
 );
 
