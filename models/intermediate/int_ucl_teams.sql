@@ -24,7 +24,7 @@ SELECT
         , l.latitude 
         , l.longitude 
         , r.rank as european_rank 
-        , rank() OVER (PARTITION BY t.team_id ORDER BY r.rank) as ucl_rank 
+        , rank() OVER (ORDER BY r.rank) as ucl_rank 
 FROM staging.stg_ucl_teams t 
 JOIN main.ucl_teams_city_latlong l 
 ON t.team_id = l.team_id 
