@@ -48,6 +48,7 @@ SELECT
         , hometeam_ucl_rank
         , awayteam_ucl_rank
         , distance_in_miles
+        , week_ending_date 
 FROM
   intermediate.int_ucl_matches
 WHERE 1=1

@@ -15,7 +15,8 @@ SELECT
         , m.season_end_date
         , m.season_current_matchday
         , m.match_id
-        , m.match_datetime_est
+        , m.match_datetime_est 
+        , date(m.match_datetime_est) as match_date
         , m.match_status
         , m.matchday
         , m.stage
@@ -55,6 +56,7 @@ LEFT JOIN staging.stg_ucl_latlong ll
 ON m.awayteam_id = ll.team_id 
 )
 
+, travel_distance as (
 SELECT
         * 
       , round(3959 * 2 * ASIN(
@@ -64,4 +66,11 @@ SELECT
             COS(RADIANS(awayteam_latitude)) *
             POWER(SIN(RADIANS(awayteam_longitude - hometeam_longitude) / 2), 2)
         )),2) AS distance_in_miles
+      , max(match_date) OVER (PARTITION BY matchday, stage ORDER BY match_date DESC) as last_match 
 FROM t1
+)
+
+SELECT 
+        td.* EXCEPT (last_match)
+      , last_match as week_ending_date
+FROM travel_distance td 
