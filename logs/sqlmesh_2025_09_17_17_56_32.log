@@ -1,0 +1,98 @@
+2025-09-17 17:56:32,694 - MainThread - sqlmesh.core.config.connection - INFO - Creating new DuckDB adapter for data files: {'md:champions_league_data'} (connection.py:491)
+2025-09-17 17:56:33,086 - MainThread - sqlmesh.core.config.connection - INFO - Creating new DuckDB adapter for in-memory database (connection.py:493)
+2025-09-17 17:56:33,086 - ThreadPoolExecutor-0_0 - sqlmesh.core.console - WARNING - Model '"champions_league_data"."sqlmesh_example"."full_model"' was not found at /Users/AaronHarkins/Python/SQLMesh_Motherduck/tests/test_full_model.yaml (console.py:2335)
+2025-09-17 17:56:33,088 - MainThread - sqlmesh.core.config.connection - INFO - Using existing DuckDB adapter due to overlapping data file: md:champions_league_data (connection.py:481)
+2025-09-17 17:56:33,088 - MainThread - sqlmesh.core.console - WARNING - The motherduck engine is not recommended for storing SQLMesh state in production deployments. Please see https://sqlmesh.readthedocs.io/en/stable/guides/configuration/#state-connection for a list of recommended engines and more information. (console.py:2335)
+2025-09-17 17:56:35,764 - MainThread - sqlmesh.core.plan.evaluator - INFO - Evaluating plan stage CreateSnapshotRecordsStage (evaluator.py:123)
+2025-09-17 17:56:36,212 - MainThread - sqlmesh.core.plan.evaluator - INFO - Evaluating plan stage PhysicalLayerSchemaCreationStage (evaluator.py:123)
+2025-09-17 17:56:36,215 - MainThread - sqlmesh.core.snapshot.evaluator - INFO - Creating schema 'champions_league_data.sqlmesh__facts' (evaluator.py:1374)
+2025-09-17 17:56:36,215 - MainThread - sqlmesh.core.engine_adapter.base - INFO - Executing SQL: /* SQLMESH_PLAN: 3c375eeb03dc4570b4c71bf78f88bc74 */ CREATE SCHEMA IF NOT EXISTS "champions_league_data"."sqlmesh__facts" (base.py:2498)
+2025-09-17 17:56:36,258 - MainThread - sqlmesh.core.snapshot.evaluator - INFO - Creating schema 'champions_league_data.sqlmesh__snapshots' (evaluator.py:1374)
+2025-09-17 17:56:36,259 - MainThread - sqlmesh.core.engine_adapter.base - INFO - Executing SQL: /* SQLMESH_PLAN: 3c375eeb03dc4570b4c71bf78f88bc74 */ CREATE SCHEMA IF NOT EXISTS "champions_league_data"."sqlmesh__snapshots" (base.py:2498)
+2025-09-17 17:56:36,302 - MainThread - sqlmesh.core.snapshot.evaluator - INFO - Creating schema 'champions_league_data.sqlmesh__staging' (evaluator.py:1374)
+2025-09-17 17:56:36,302 - MainThread - sqlmesh.core.engine_adapter.base - INFO - Executing SQL: /* SQLMESH_PLAN: 3c375eeb03dc4570b4c71bf78f88bc74 */ CREATE SCHEMA IF NOT EXISTS "champions_league_data"."sqlmesh__staging" (base.py:2498)
+2025-09-17 17:56:36,353 - MainThread - sqlmesh.core.snapshot.evaluator - INFO - Creating schema 'champions_league_data.sqlmesh__intermediate' (evaluator.py:1374)
+2025-09-17 17:56:36,354 - MainThread - sqlmesh.core.engine_adapter.base - INFO - Executing SQL: /* SQLMESH_PLAN: 3c375eeb03dc4570b4c71bf78f88bc74 */ CREATE SCHEMA IF NOT EXISTS "champions_league_data"."sqlmesh__intermediate" (base.py:2498)
+2025-09-17 17:56:36,395 - MainThread - sqlmesh.core.plan.evaluator - INFO - Evaluating plan stage BackfillStage (evaluator.py:123)
+2025-09-17 17:56:36,397 - MainThread - sqlmesh.core.snapshot.evaluator - INFO - Listing data objects in schema champions_league_data.sqlmesh__staging (evaluator.py:1477)
+2025-09-17 17:56:36,398 - MainThread - sqlmesh.core.engine_adapter.base - INFO - Executing SQL: /* SQLMESH_PLAN: 3c375eeb03dc4570b4c71bf78f88bc74 */ SELECT CURRENT_CATALOG() (base.py:2498)
+2025-09-17 17:56:36,399 - MainThread - sqlmesh.core.engine_adapter.base - INFO - Executing SQL: /* SQLMESH_PLAN: 3c375eeb03dc4570b4c71bf78f88bc74 */ SELECT CURRENT_CATALOG() (base.py:2498)
+2025-09-17 17:56:36,401 - MainThread - sqlmesh.core.engine_adapter.base - INFO - Executing SQL: /* SQLMESH_PLAN: 3c375eeb03dc4570b4c71bf78f88bc74 */ SELECT table_name AS name, table_schema AS schema, CASE table_type WHEN 'BASE TABLE' THEN 'table' WHEN 'VIEW' THEN 'view' WHEN 'LOCAL TEMPORARY' THEN 'table' END AS type FROM system.information_schema.tables WHERE (table_catalog = 'champions_league_data' AND table_schema = 'sqlmesh__staging') AND table_name IN ('staging__stg_ucl_squads__952435539') (base.py:2498)
+2025-09-17 17:56:36,418 - MainThread - sqlmesh.core.snapshot.evaluator - INFO - Listing data objects in schema champions_league_data.sqlmesh__snapshots (evaluator.py:1477)
+2025-09-17 17:56:36,418 - MainThread - sqlmesh.core.engine_adapter.base - INFO - Executing SQL: /* SQLMESH_PLAN: 3c375eeb03dc4570b4c71bf78f88bc74 */ SELECT CURRENT_CATALOG() (base.py:2498)
+2025-09-17 17:56:36,419 - MainThread - sqlmesh.core.engine_adapter.base - INFO - Executing SQL: /* SQLMESH_PLAN: 3c375eeb03dc4570b4c71bf78f88bc74 */ SELECT CURRENT_CATALOG() (base.py:2498)
+2025-09-17 17:56:36,421 - MainThread - sqlmesh.core.engine_adapter.base - INFO - Executing SQL: /* SQLMESH_PLAN: 3c375eeb03dc4570b4c71bf78f88bc74 */ SELECT table_name AS name, table_schema AS schema, CASE table_type WHEN 'BASE TABLE' THEN 'table' WHEN 'VIEW' THEN 'view' WHEN 'LOCAL TEMPORARY' THEN 'table' END AS type FROM system.information_schema.tables WHERE (table_catalog = 'champions_league_data' AND table_schema = 'sqlmesh__snapshots') AND table_name IN ('snapshots__ucl_squad_snapshot__2083776472') (base.py:2498)
+2025-09-17 17:56:36,430 - MainThread - sqlmesh.core.snapshot.evaluator - INFO - Evaluating snapshot SnapshotId<"champions_league_data"."staging"."stg_ucl_squads": 4204414201> (evaluator.py:700)
+2025-09-17 17:56:36,430 - MainThread - sqlmesh.core.snapshot.evaluator - INFO - Inserting data for snapshot SnapshotId<"champions_league_data"."staging"."stg_ucl_squads": 4204414201> (evaluator.py:909)
+2025-09-17 17:56:36,432 - MainThread - sqlmesh.core.snapshot.evaluator - INFO - Inserting batch (2025-09-05 00:00:00, 2025-09-11 00:00:00) into champions_league_data.sqlmesh__staging.staging__stg_ucl_squads__952435539' (evaluator.py:939)
+2025-09-17 17:56:36,432 - MainThread - sqlmesh.core.engine_adapter.base - INFO - Executing SQL: /* SQLMESH_PLAN: 3c375eeb03dc4570b4c71bf78f88bc74 */ DESCRIBE "champions_league_data"."sqlmesh__staging"."staging__stg_ucl_squads__952435539" (base.py:2498)
+2025-09-17 17:56:36,510 - MainThread - sqlmesh.core.engine_adapter.base - INFO - Executing SQL: /* SQLMESH_PLAN: 3c375eeb03dc4570b4c71bf78f88bc74 */ SELECT CURRENT_CATALOG() (base.py:2498)
+2025-09-17 17:56:36,511 - MainThread - sqlmesh.core.engine_adapter.base - INFO - Executing SQL: /* SQLMESH_PLAN: 3c375eeb03dc4570b4c71bf78f88bc74 */ SELECT CURRENT_CATALOG() (base.py:2498)
+2025-09-17 17:56:36,512 - MainThread - sqlmesh.core.engine_adapter.base - INFO - Executing SQL: /* SQLMESH_PLAN: 3c375eeb03dc4570b4c71bf78f88bc74 */ SELECT table_name AS name, table_schema AS schema, CASE table_type WHEN 'BASE TABLE' THEN 'table' WHEN 'VIEW' THEN 'view' WHEN 'LOCAL TEMPORARY' THEN 'table' END AS type FROM system.information_schema.tables WHERE (table_catalog = 'champions_league_data' AND table_schema = 'sqlmesh__staging') AND table_name IN ('staging__stg_ucl_squads__952435539') (base.py:2498)
+2025-09-17 17:56:36,517 - MainThread - sqlmesh.core.engine_adapter.base - INFO - Executing SQL: /* SQLMESH_PLAN: 3c375eeb03dc4570b4c71bf78f88bc74 */ SELECT CURRENT_CATALOG() (base.py:2498)
+2025-09-17 17:56:36,518 - MainThread - sqlmesh.core.engine_adapter.base - INFO - Executing SQL: /* SQLMESH_PLAN: 3c375eeb03dc4570b4c71bf78f88bc74 */ SELECT type FROM DUCKDB_DATABASES() WHERE database_name = 'champions_league_data' (base.py:2498)
+2025-09-17 17:56:36,519 - MainThread - sqlmesh.core.engine_adapter.base - INFO - Executing SQL: /* SQLMESH_PLAN: 3c375eeb03dc4570b4c71bf78f88bc74 */ CREATE OR REPLACE TABLE "champions_league_data"."sqlmesh__staging"."staging__stg_ucl_squads__952435539" AS SELECT "team_id" AS "team_id", "player_id" AS "player_id", "name" AS "player_name", "position" AS "position", "dateofbirth" AS "date_of_birth", "nationality" AS "nationality" FROM "champions_league_data"."main"."champions_league_team_squad" AS "champions_league_team_squad" (base.py:2498)
+2025-09-17 17:56:36,597 - MainThread - sqlmesh.core.scheduler - INFO - SKIPPED snapshot "champions_league_data"."snapshots"."ucl_squad_snapshot"
+ (scheduler.py:592)
+2025-09-17 17:56:36,597 - MainThread - sqlmesh.core.scheduler - INFO - Execution failed for node EvaluateNode(snapshot_name='"champions_league_data"."staging"."stg_ucl_squads"', interval=(1757030400000, 1757548800000), batch_index=0) (scheduler.py:597)
+Traceback (most recent call last):
+  File "/Users/AaronHarkins/Python/SQLMesh_Motherduck/.venv/lib/python3.12/site-packages/sqlmesh/utils/concurrency.py", line 234, in sequential_apply_to_dag
+    fn(node)
+  File "/Users/AaronHarkins/Python/SQLMesh_Motherduck/.venv/lib/python3.12/site-packages/sqlmesh/core/scheduler.py", line 533, in run_node
+    audit_results = self.evaluate(
+                    ^^^^^^^^^^^^^^
+  File "/Users/AaronHarkins/Python/SQLMesh_Motherduck/.venv/lib/python3.12/site-packages/sqlmesh/core/scheduler.py", line 229, in evaluate
+    wap_id = self.snapshot_evaluator.evaluate(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/AaronHarkins/Python/SQLMesh_Motherduck/.venv/lib/python3.12/site-packages/sqlmesh/core/snapshot/evaluator.py", line 182, in evaluate
+    result = self._evaluate_snapshot(
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/AaronHarkins/Python/SQLMesh_Motherduck/.venv/lib/python3.12/site-packages/sqlmesh/core/snapshot/evaluator.py", line 796, in _evaluate_snapshot
+    self._render_and_insert_snapshot(
+  File "/Users/AaronHarkins/Python/SQLMesh_Motherduck/.venv/lib/python3.12/site-packages/sqlmesh/core/snapshot/evaluator.py", line 989, in _render_and_insert_snapshot
+    apply(query_or_df, index)
+  File "/Users/AaronHarkins/Python/SQLMesh_Motherduck/.venv/lib/python3.12/site-packages/sqlmesh/core/snapshot/evaluator.py", line 945, in apply
+    evaluation_strategy.insert(
+  File "/Users/AaronHarkins/Python/SQLMesh_Motherduck/.venv/lib/python3.12/site-packages/sqlmesh/core/snapshot/evaluator.py", line 2130, in insert
+    self._replace_query_for_model(model, table_name, query_or_df, render_kwargs, **kwargs)
+  File "/Users/AaronHarkins/Python/SQLMesh_Motherduck/.venv/lib/python3.12/site-packages/sqlmesh/core/snapshot/evaluator.py", line 1878, in _replace_query_for_model
+    self.adapter.replace_query(
+  File "/Users/AaronHarkins/Python/SQLMesh_Motherduck/.venv/lib/python3.12/site-packages/sqlmesh/core/engine_adapter/shared.py", line 318, in internal_wrapper
+    return func(*list_args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/AaronHarkins/Python/SQLMesh_Motherduck/.venv/lib/python3.12/site-packages/sqlmesh/core/engine_adapter/base.py", line 520, in replace_query
+    return self._create_table_from_source_queries(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/AaronHarkins/Python/SQLMesh_Motherduck/.venv/lib/python3.12/site-packages/sqlmesh/core/engine_adapter/base.py", line 925, in _create_table_from_source_queries
+    self._create_table(
+  File "/Users/AaronHarkins/Python/SQLMesh_Motherduck/.venv/lib/python3.12/site-packages/sqlmesh/core/engine_adapter/duckdb.py", line 188, in _create_table
+    super()._create_table(
+  File "/Users/AaronHarkins/Python/SQLMesh_Motherduck/.venv/lib/python3.12/site-packages/sqlmesh/core/engine_adapter/base.py", line 968, in _create_table
+    self.execute(
+  File "/Users/AaronHarkins/Python/SQLMesh_Motherduck/.venv/lib/python3.12/site-packages/sqlmesh/core/engine_adapter/base.py", line 2475, in execute
+    self._execute(sql, track_rows_processed, **kwargs)
+  File "/Users/AaronHarkins/Python/SQLMesh_Motherduck/.venv/lib/python3.12/site-packages/sqlmesh/core/engine_adapter/base.py", line 2507, in _execute
+    self.cursor.execute(sql, **kwargs)
+duckdb.duckdb.BinderException: Binder Error: Referenced column "name" not found in FROM clause!
+Candidate bindings: "team_id", "player_id", "player_name", "last_modified", "player_position"
+
+LINE 1: ... AS SELECT "team_id" AS "team_id", "player_id" AS "player_id", "name" AS "player_name", "position" AS "position", "dateofb...
+                                                                          ^
+
+The above exception was the direct cause of the following exception:
+
+sqlmesh.utils.concurrency.NodeExecutionFailedError: Execution failed for node EvaluateNode(snapshot_name='"champions_league_data"."staging"."stg_ucl_squads"', interval=(1757030400000, 1757548800000), batch_index=0)
+2025-09-17 17:56:36,604 - MainThread - sqlmesh.core.context - INFO - Plan application failed. (context.py:1735)
+Traceback (most recent call last):
+  File "/Users/AaronHarkins/Python/SQLMesh_Motherduck/.venv/lib/python3.12/site-packages/sqlmesh/core/context.py", line 1727, in apply
+    self._apply(plan, circuit_breaker)
+  File "/Users/AaronHarkins/Python/SQLMesh_Motherduck/.venv/lib/python3.12/site-packages/sqlmesh/core/context.py", line 2519, in _apply
+    self._scheduler.create_plan_evaluator(self).evaluate(
+  File "/Users/AaronHarkins/Python/SQLMesh_Motherduck/.venv/lib/python3.12/site-packages/sqlmesh/core/plan/evaluator.py", line 105, in evaluate
+    self._evaluate_stages(plan_stages, plan)
+  File "/Users/AaronHarkins/Python/SQLMesh_Motherduck/.venv/lib/python3.12/site-packages/sqlmesh/core/plan/evaluator.py", line 125, in _evaluate_stages
+    handler(stage, plan)
+  File "/Users/AaronHarkins/Python/SQLMesh_Motherduck/.venv/lib/python3.12/site-packages/sqlmesh/core/plan/evaluator.py", line 263, in visit_backfill_stage
+    raise PlanError("Plan application failed.")
+sqlmesh.utils.errors.PlanError: Plan application failed.
+2025-09-17 17:56:36,605 - MainThread - root - INFO - Shutting down the event dispatcher (dispatcher.py:159)

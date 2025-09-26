@@ -6,22 +6,22 @@ MODEL (
 );
 
 SELECT
-          area_name
-        , id as team_id 
-        , name as team_name 
-        , shortName as team_short_name
-        , tla as team_tla 
-        , address as team_address
-        , venue as team_venue
+          team_id
+        , team_name
+        , team_shortName as team_short_name 
+        , team_tla
+        , address as team_address 
+        , venue as team_venue 
+        , lastUpdated
+        , area_id
+        , area_name
         , coach_id
         , coach_firstName as coach_first_name 
         , coach_lastName as coach_last_name 
-        , coach_name 
+        , coach_name
         , coach_nationality
         , coach_contract_start
         , coach_contract_until
-        , lastUpdated
-        , latitude
-        , longitude
+        , last_modified
 FROM
   champions_league_data.main.champions_league_teams

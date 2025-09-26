@@ -23,7 +23,6 @@ SELECT
         , matchday
         , stage
         , group
-        , lastupdated
         , hometeam_id
         , hometeam_name
         , hometeam_shortname

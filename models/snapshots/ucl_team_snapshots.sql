@@ -3,7 +3,7 @@ MODEL (
   kind incremental_by_unique_key(
     unique_key team_id
   ),
-  cron '0 12 * * 3#1',
+  cron '0 8 * * 3#1',
   grain team_id 
 );
 

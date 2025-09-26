@@ -17,11 +17,11 @@ SELECT
         , m.match_id
         , m.match_datetime_est 
         , date(m.match_datetime_est) as match_date
+        , date(date_trunc(week,m.match_datetime_est)) as match_week
         , m.match_status
         , m.matchday
         , m.stage
         , m.group
-        , m.lastupdated
         , m.hometeam_id
         , m.hometeam_name
         , m.hometeam_shortname
@@ -37,6 +37,8 @@ SELECT
         , m.score_halftime_home
         , m.score_halftime_away
         , m.referees
+        , dense_rank() OVER (ORDER BY date(date_trunc(week,m.match_datetime_est))) as match_week_rank
+        , dense_rank() OVER (PARTITION BY m.match_status ORDER BY date(date_trunc(week,m.match_datetime_est))) as match_status_week_rank
         , l.latitude as hometeam_latitude
         , l.longitude as hometeam_longitude
         , ll.latitude as awayteam_latitude

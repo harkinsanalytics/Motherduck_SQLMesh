@@ -53,7 +53,7 @@ SELECT
   , ud.matchday
   , ud.team_id
   , ud.team_tla
-  , t.team_name
+  , t.team_name as team_name 
   , ud.home_away
   , ud.score_fulltime
   , ud.score_winner
@@ -80,6 +80,7 @@ JOIN points pp
 ON p.match_id = pp.match_id AND p.team_id != pp.team_id
 )
 
+, matches as (
 SELECT 
       matchday
     , match_status 
@@ -93,4 +94,10 @@ SELECT
 FROM goals_conceded
 WHERE 1=1
 AND match_status = 'FINISHED'
-ORDER BY 1, 4 DESC, 7 DESC, 5 DESC, 3
+)
+
+SELECT 
+      *
+    , CASE WHEN max_matchday = matchday THEN 1 ELSE 0 END as current_matchday 
+FROM matches 
+ORDER BY 1, 5 DESC, 8 DESC, 6 DESC, 4

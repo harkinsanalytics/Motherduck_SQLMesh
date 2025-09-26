@@ -7,11 +7,10 @@ MODEL (
 
 SELECT
           team_id
-        , team_name
-        , id as player_id
-        , name as player_name
-        , position
-        , dateOfBirth as date_of_birth
-        , nationality
+        , player_id
+        , player_name
+        , player_position
+        , player_nationality
+        , player_shirtnumber as player_shirt_number
 FROM
   champions_league_data.main.champions_league_team_squad

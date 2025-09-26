@@ -5,6 +5,7 @@ MODEL (
   , grain team_id
 );
 
+WITH t1 as (
 SELECT
           t.area_name
         , t.team_id
@@ -30,3 +31,8 @@ JOIN main.ucl_teams_city_latlong l
 ON t.team_id = l.team_id 
 JOIN main.ucl_european_rankings r 
 ON t.team_id = r.team_id
+)
+
+SELECT 
+      *
+FROM t1 

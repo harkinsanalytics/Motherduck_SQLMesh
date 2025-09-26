@@ -1,0 +1,6 @@
+2025-09-18 05:36:01,440 - MainThread - sqlmesh.core.config.connection - INFO - Creating new DuckDB adapter for data files: {'md:champions_league_data'} (connection.py:491)
+2025-09-18 05:36:01,796 - MainThread - sqlmesh.core.config.connection - INFO - Creating new DuckDB adapter for in-memory database (connection.py:493)
+2025-09-18 05:36:01,796 - ThreadPoolExecutor-0_0 - sqlmesh.core.console - WARNING - Model '"champions_league_data"."sqlmesh_example"."full_model"' was not found at /Users/AaronHarkins/Python/SQLMesh_Motherduck/tests/test_full_model.yaml (console.py:2335)
+2025-09-18 05:36:01,798 - MainThread - sqlmesh.core.config.connection - INFO - Using existing DuckDB adapter due to overlapping data file: md:champions_league_data (connection.py:481)
+2025-09-18 05:36:01,798 - MainThread - sqlmesh.core.console - WARNING - The motherduck engine is not recommended for storing SQLMesh state in production deployments. Please see https://sqlmesh.readthedocs.io/en/stable/guides/configuration/#state-connection for a list of recommended engines and more information. (console.py:2335)
+2025-09-18 05:36:03,129 - MainThread - root - INFO - Shutting down the event dispatcher (dispatcher.py:159)
